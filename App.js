@@ -1,9 +1,15 @@
+import React, { Component } from "react";
 import { View, Text } from "react-native";
 
-export default function App() {
-    return(
-        <View>
-            <Text>Ola Mundo</Text>
-        </View>
-    )
+class App extends React.Component {
+    render() {
+        return(
+            <View>
+                <Text>Ola Mundo</Text>
+                <Text>Componentização</Text>
+            </View>
+        )
+    }
 }
+
+export default App;
