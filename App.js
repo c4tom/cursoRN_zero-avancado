@@ -7,6 +7,7 @@ class App extends React.Component {
             <View>
                 <Text>Ola Mundo</Text>
                 <Text>Componentização</Text>
+                <Text style={{ color: 'red', fontSize: 50, margin: 20}}>Estilo com Cor</Text>
             </View>
         )
     }
