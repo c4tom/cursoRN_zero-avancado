@@ -6,17 +6,17 @@ class App extends Component {
     super(props);
     this.state = {
       nomeMsg: '',
-      nomeInput: '',
     };
     this.onPressButton = this.onPressButton.bind(this);
   }
 
-  onPressButton(){
-    if(this.state.nomeInput === ''){
-      alert('Digite seu nome!');
-      return;
+  onPressButton(textoInput){
+    if(textoInput === '') {
+      this.setState({nomeMsg: ''});
+    } else {
+      this.setState({nomeMsg: 'Bem vindo: ' + textoInput});
     }
-    this.setState({nomeMsg: 'Bem vindo: ' + this.state.nomeInput});
+    
   }
 
   render() {
@@ -26,9 +26,8 @@ class App extends Component {
           style={styles.input}
           placeholder="Digite seu nome"
           underlineColorAndroid="transparent"
-          onChangeText={textoInput => this.setState({nomeInput: textoInput})}
+          onChangeText={textoInput => this.onPressButton(textoInput)}
         />
-        <Button title="Enviar" onPress={this.onPressButton} />
         <Text> {this.state.nomeMsg} </Text>
       </View>
     );
