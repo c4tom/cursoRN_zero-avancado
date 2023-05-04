@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, Image, Button } from "react-native";
+import { View, Text, Image, Button, StyleSheet } from "react-native";
 
 class App extends React.Component {
 
@@ -20,12 +20,22 @@ class App extends React.Component {
 
     render() {
         return(
-            <View>
-                <Button title="Trocar Estado" onPress={() => this.trocarEstado('Beltrano da Silva')} />
-                <Text>{this.state.nome}</Text>
+            <View style={styles.container}>
+                <Button color={'blue'} title="Trocar Estado" onPress={() => this.trocarEstado('Beltrano da Silva')} />
+                <Button color={'red'} title="Reset" onPress={() => this.trocarEstado('')} />
+                <Text style={styles.nome}>{this.state.nome}</Text>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        marginTop: 40
+    },
+    nome: {
+        fontSize: 35
+    }
+});
 
 export default App;
