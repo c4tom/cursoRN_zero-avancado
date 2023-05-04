@@ -1,26 +1,49 @@
-/* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet, Button, TextInput} from 'react-native';
 
-class App extends React.Component {
-  // https://reactnative.dev/docs/flexbox?language=typescript#align-content
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      nomeMsg: '',
+      nomeInput: '',
+    };
+    this.onPressButton = this.onPressButton.bind(this);
+  }
+
+  onPressButton(){
+    if(this.state.nomeInput === ''){
+      alert('Digite seu nome!');
+      return;
+    }
+    this.setState({nomeMsg: 'Bem vindo: ' + this.state.nomeInput});
+  }
+
   render() {
     return (
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems: 'flex-end',
-        }}>
-        <View style={{width: 50, height: 50, backgroundColor: 'black'}} />
-        <View style={{width: 50, height: 50, backgroundColor: 'blue'}} />
-        <View style={{width: 50, height: 50, backgroundColor: 'yellow'}} />
-        <View style={{width: 50, height: 50, backgroundColor: 'pink'}} />
-        <View style={{width: 50, height: 50, backgroundColor: 'violet'}} />
+      <View>
+        <TextInput
+          style={styles.input}
+          placeholder="Digite seu nome"
+          underlineColorAndroid="transparent"
+          onChangeText={textoInput => this.setState({nomeInput: textoInput})}
+        />
+        <Button title="Enviar" onPress={this.onPressButton} />
+        <Text> {this.state.nomeMsg} </Text>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#DFDFDF',
+  },
+  input: {
+    backgroundColor: 'yellow',
+    borderColor: 'black',
+    borderWidth: 2,
+  },
+});
 
 export default App;
